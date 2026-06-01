@@ -34,6 +34,10 @@ function Navbar() {
         Register
       </Link>
 
+      <Link to="/edit">
+        Edit Post
+      </Link>
+
       <button onClick={logout}>
         Logout
       </button>
