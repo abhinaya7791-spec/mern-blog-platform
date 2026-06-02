@@ -11,7 +11,7 @@ export default function CreatePost() {
       const token = localStorage.getItem("token");
 
       await axios.post(
-        "http://localhost:5000/api/posts/create",
+        "http:///api/posts/create",
         {
           title,
           content

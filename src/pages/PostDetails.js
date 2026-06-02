@@ -27,7 +27,7 @@ function PostDetails() {
   const addComment = async () => {
     try {
       await axios.post(
-        "http://localhost:5000/api/comments/add",
+        "http:///api/comments/add",
         {
           text,
           postId: id,

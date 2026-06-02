@@ -20,7 +20,7 @@ function Register() {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/auth/register",
+        "http://mern-blog-platform-tcb4.onrender.com/api/auth/register",
         formData
       );
 

@@ -12,7 +12,7 @@ function Home() {
   const getPosts = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/posts"
+        "http://mern-blog-platform-tcb4.onrender.com/api/posts"
       );
 
       setPosts(res.data);
@@ -24,7 +24,7 @@ function Home() {
   const deletePost = async (id) => {
     try {
       await axios.delete(
-        `http://localhost:5000/api/posts/${id}`
+        `http://mern-blog-platform-tcb4.onrender.com/api/posts/${id}`
       );
 
       alert("Post Deleted");
