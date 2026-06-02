@@ -8,19 +8,19 @@ function PostDetails() {
   const [comments, setComments] = useState([]);
   const [text, setText] = useState("");
 
-  const getComments = async () => {
-    try {
-      const res = await axios.get(
-        `https://mern-blog-platform-tcb4.onrender.com/api/comments/${id}`
-      );
-      setComments(res.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   useEffect(() => {
-    getComments();
+    const fetchComments = async () => {
+      try {
+        const res = await axios.get(
+          `https://mern-blog-platform-tcb4.onrender.com/api/comments/${id}`
+        );
+        setComments(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchComments();
   }, [id]);
 
   const addComment = async () => {
@@ -36,7 +36,11 @@ function PostDetails() {
 
       alert("Comment Added");
       setText("");
-      getComments();
+
+      const res = await axios.get(
+        `https://mern-blog-platform-tcb4.onrender.com/api/comments/${id}`
+      );
+      setComments(res.data);
     } catch (error) {
       console.log(error);
     }
