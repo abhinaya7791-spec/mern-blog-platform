@@ -8,14 +8,10 @@ function PostDetails() {
   const [comments, setComments] = useState([]);
   const [text, setText] = useState("");
 
-  useEffect(() => {
-    getComments();
-  }, []);
-
   const getComments = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/comments/${id}`
+        `https://mern-blog-platform-tcb4.onrender.com/api/comments/${id}`
       );
 
       setComments(res.data);
@@ -24,14 +20,19 @@ function PostDetails() {
     }
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => {
+    getComments();
+  }, []);
+
   const addComment = async () => {
     try {
       await axios.post(
-        "http:///api/comments/add",
+        "https://mern-blog-platform-tcb4.onrender.com/api/comments/add",
         {
           text,
           postId: id,
-          username: "abi"
+          username: "abi",
         }
       );
 
@@ -52,9 +53,7 @@ function PostDetails() {
       <input
         placeholder="Write Comment"
         value={text}
-        onChange={(e) =>
-          setText(e.target.value)
-        }
+        onChange={(e) => setText(e.target.value)}
       />
 
       <button onClick={addComment}>
