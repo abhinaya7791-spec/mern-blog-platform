@@ -13,17 +13,15 @@ function PostDetails() {
       const res = await axios.get(
         `https://mern-blog-platform-tcb4.onrender.com/api/comments/${id}`
       );
-
       setComments(res.data);
     } catch (error) {
       console.log(error);
     }
   };
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     getComments();
-  }, []);
+  }, [id]);
 
   const addComment = async () => {
     try {
@@ -37,9 +35,7 @@ function PostDetails() {
       );
 
       alert("Comment Added");
-
       setText("");
-
       getComments();
     } catch (error) {
       console.log(error);
@@ -56,18 +52,14 @@ function PostDetails() {
         onChange={(e) => setText(e.target.value)}
       />
 
-      <button onClick={addComment}>
-        Add Comment
-      </button>
+      <button onClick={addComment}>Add Comment</button>
 
       <hr />
 
       {comments.map((comment) => (
         <div key={comment._id}>
           <h4>{comment.username}</h4>
-
           <p>{comment.text}</p>
-
           <hr />
         </div>
       ))}
